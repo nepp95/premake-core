@@ -1211,6 +1211,32 @@
 		kind = "boolean"
 	}
 
+	api.register {
+		name = "vcpkgenable",
+		scope = "project",
+		kind = "string",
+		allowed = {
+			"Off",
+			"On",
+		}
+	}
+
+	api.register {
+		name = "vcpkgenablemanifest",
+		scope = "project",
+		kind = "string",
+		allowed = {
+			"Off",
+			"On",
+		}
+	}
+
+	api.register {
+		name = "vcpkginstalldir",
+		scope = "project",
+		kind = "path"
+	}
+	
 	p.api.register {
 		name = "targetbundleextension",
 		scope = "config",

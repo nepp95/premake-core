@@ -42,6 +42,7 @@
 			m.propertySheetGroup,
 			m.userMacros,
 			m.outputPropertiesGroup,
+			m.vcpkg,
 			m.itemDefinitionGroups,
 			m.assemblyReferences,
 			m.files,
@@ -124,6 +125,24 @@
 		end
 	end
 
+
+	function m.vcpkg(prj)
+		p.push('<PropertyGroup Label="Vcpkg">')
+		if prj.vcpkgenable then
+			p.w('<VcpkgEnabled>true</VcpkgEnabled>')
+		else
+			p.w('<VcpkgEnabled>false</VcpkgEnabled>')
+		end
+		if prj.vcpkgenablemanifest then
+			p.w('<VcpkgEnableManifest>true</VcpkgEnableManifest>')
+		else
+			p.w('<VcpkgEnableManifest>false</VcpkgEnableManifest>')
+		end
+		if prj.vcpkginstalldir then
+			p.w('<VcpkgInstalledDir>%s</VcpkgInstalledDir>', vstudio.path(prj, prj.vcpkginstalldir))
+		end
+		p.pop('</PropertyGroup>')
+	end
 
 
 --
